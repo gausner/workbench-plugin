@@ -1,0 +1,16 @@
+package com.myspace.kie_server_test;
+
+import com.myspace.kie_server_test.Applicant;
+
+no-loop
+
+rule "Approve applicants"
+
+when
+    $a: Applicant(age > 17, moneyInvestment > 30, approved == false)
+
+then
+    modify($a){
+        setApproved(true);
+    }
+end
