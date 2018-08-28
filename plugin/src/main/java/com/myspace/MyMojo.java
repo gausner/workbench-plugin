@@ -3,8 +3,8 @@ package com.myspace;
 import com.myspace.exception.Failure;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugins.annotations.Mojo;
-import org.apache.maven.plugins.annotations.Parameter;
+//import org.apache.maven.plugins.annotations.Mojo;
+//import org.apache.maven.plugins.annotations.Parameter;
 import org.jboss.weld.environment.se.Weld;
 import org.jboss.weld.environment.se.WeldContainer;
 import org.kie.api.KieServices;
@@ -20,14 +20,13 @@ import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.conf.ClockTypeOption;
 import org.kie.internal.io.ResourceFactory;
 
-@Mojo(name = "hello")
+//@Mojo(name = "hello")
 public class MyMojo extends AbstractMojo {
-    @Parameter(property = "msg", defaultValue = "from maven")
+//    @Parameter(property = "msg", defaultValue = "from maven")
     private String msg;
 
     public void execute()
             throws MojoExecutionException {
-        getLog().info("Hello " + msg);
         Weld w = new Weld();
 
         WeldContainer wc = w.initialize();
@@ -35,7 +34,6 @@ public class MyMojo extends AbstractMojo {
         app.bootstrapDrools();
 
         w.shutdown();
-        throw new Failure();
     }
 
     public String getMsg() {
